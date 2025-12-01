@@ -7,6 +7,11 @@ export type FeedbackData = {
   rating?: number; // Nilai 1 sampai 5
 };
 
-// Tipe data ini digunakan untuk data yang akan kita kirim ke Supabase.
-// Kita tidak menyertakan photo_url di sini karena upload foto ditangani terpisah 
-// sebelum data ini disimpan.
+// Tipe data lengkap dari database
+export interface FullFeedbackItem extends FeedbackData {
+    id: string; // uuid
+    created_at: string;
+    photo_url: string | null;
+    status: 'new' | 'in-progress' | 'resolved';
+    admin_response: string | null;
+}
